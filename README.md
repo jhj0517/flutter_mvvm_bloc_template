@@ -47,6 +47,7 @@ flutter:
 ```
 
 # Folder structure
+[**Layer-first structure**](https://codewithandrea.com/articles/flutter-project-structure/)
 ```folder
 lib/
 ├── constants/                                 (static constant values)

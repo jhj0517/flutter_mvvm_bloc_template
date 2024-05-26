@@ -1,28 +1,49 @@
-abstract class HomeEvent {}
+import 'package:equatable/equatable.dart';
 
-class LoadMemos extends HomeEvent {}
+import '../../../data/models/models.dart';
+
+abstract class HomeEvent extends Equatable {
+  const HomeEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class ReadMemos extends HomeEvent {}
 
 class AddMemo extends HomeEvent {
   final Memo memo;
 
-  AddMemo(this.memo);
+  const AddMemo(this.memo);
+
+  @override
+  List<Object> get props => [memo];
 }
 
 class DeleteMemo extends HomeEvent {
   final Memo memo;
 
-  DeleteMemo(this.memo);
+  const DeleteMemo(this.memo);
+
+  @override
+  List<Object> get props => [memo];
 }
 
 class UpdateMemo extends HomeEvent {
   final Memo memo;
 
-  UpdateMemo(this.memo);
+  const UpdateMemo(this.memo);
+
+  @override
+  List<Object> get props => [memo];
 }
 
 class FetchOrderBook extends HomeEvent {
   final String symbol;
   final int? limit;
 
-  FetchOrderBook({required this.symbol, this.limit});
+  const FetchOrderBook({required this.symbol, this.limit});
+
+  @override
+  List<Object> get props => [symbol, limit ?? -1];
 }

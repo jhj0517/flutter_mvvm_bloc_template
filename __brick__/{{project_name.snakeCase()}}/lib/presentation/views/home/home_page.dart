@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_mvvm_bloc_temp/data/models/local/memo.dart';
 import 'package:intl/intl.dart';
 
-import '../../providers/providers.dart';
 import '../widgets/common/common.dart';
 import 'widgets/memo_tile.dart';
 import 'widgets/memo_input_field.dart';
@@ -16,14 +15,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  late ThemeProvider themeProvider;
-  late HomeProvider homeProvider;
-
   @override
   void initState() {
-    themeProvider = context.read<ThemeProvider>();
-    homeProvider = context.read<HomeProvider>();
-    init();
     super.initState();
   }
 
@@ -32,42 +25,35 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  Future<void> init() async{
-    homeProvider.readMemos();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: NormalAppBar(title: Intl.message("appTitle")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 20),
-          OutlinedButton(
-              onPressed: () async {
-                await homeProvider.fetchOrderBook(symbol: "BTCUSDT");
-                debugPrint("TEST: ${homeProvider.response!.toJson()}");
-              },
-              child: const Text("DEBUG RETROFIT")
-          ),
-          const SizedBox(height: 20),
-          const MemoInputField(),
-          Consumer<HomeProvider>(builder: (context, homeProvider, child) {
-            return Expanded(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        appBar: NormalAppBar(title: Intl.message("appTitle")),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 20),
+            OutlinedButton(
+                onPressed: () async {
+                },
+                child: const Text("DEBUG RETROFIT")
+            ),
+            const SizedBox(height: 20),
+            const MemoInputField(),
+            Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: homeProvider.memos.length,
+                itemCount: 1,
                 itemBuilder: (context, index) {
-                  final memo = homeProvider.memos[index];
+                  final memo = Memo(content: "sample", isImportant: false);
                   return MemoTile(memo: memo);
                 },
               ),
-            );
-          }),
-        ],
-      )
+            ),
+          ],
+        )
     );
   }
 }

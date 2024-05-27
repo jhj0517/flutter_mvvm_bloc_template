@@ -20,7 +20,7 @@ class MemoTile extends StatelessWidget {
       trailing: IconButton(
           icon: const Icon(Icons.delete),
           onPressed: () {
-            final homeBloc = BlocProvider.of<HomeBloc>(context, listen: false);
+            final homeBloc = context.read<HomeBloc>();
             homeBloc.add(
                 DeleteMemo(memo)
             );

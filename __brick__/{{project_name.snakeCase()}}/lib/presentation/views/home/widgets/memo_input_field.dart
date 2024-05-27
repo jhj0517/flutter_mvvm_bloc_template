@@ -30,7 +30,7 @@ class MemoInputFieldState extends State<MemoInputField> {
           suffixIcon: IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              final homeBloc = BlocProvider.of<HomeBloc>(context, listen: false);
+              final homeBloc = context.read<HomeBloc>();
               homeBloc.add(
                   AddMemo(
                       Memo(content: _memoController.text, isImportant: false)

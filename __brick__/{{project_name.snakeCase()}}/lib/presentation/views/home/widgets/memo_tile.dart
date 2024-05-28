@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/models.dart';
-import '../../../blocs/home/home_bloc.dart';
+import '../../../blocs/home/home_cubit.dart';
 import '../../../blocs/home/home_event.dart';
 
 class MemoTile extends StatelessWidget {

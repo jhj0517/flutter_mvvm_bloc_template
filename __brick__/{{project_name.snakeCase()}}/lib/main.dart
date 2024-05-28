@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'generated/l10n.dart';
-import 'presentation/blocs/home/home_bloc.dart';
+import 'presentation/blocs/home/home_cubit.dart';
 import 'presentation/views/views.dart';
 import 'data/repositories/repositories.dart';
 import 'di/dependency_injection.dart';

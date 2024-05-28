@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mvvm_bloc_temp/presentation/blocs/home/home_event.dart';
 
 import '../../../../data/models/local/memo.dart';
-import '../../../blocs/home/home_bloc.dart';
+import '../../../blocs/home/home_cubit.dart';
 
 class MemoInputField extends StatefulWidget {
   const MemoInputField({super.key});

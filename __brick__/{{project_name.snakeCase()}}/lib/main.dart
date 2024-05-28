@@ -27,20 +27,20 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => HomeBloc(
+            create: (context) => HomeCubit(
                 memoRepository: locator<MemoRepository>(),
                 binanceRepository: locator<BinanceRepository>()
             ),
           ),
           BlocProvider(
-            create: (context) => ThemeBloc(prefs: locator<SharedPreferences>()),
+            create: (context) => ThemeCubit(prefs: locator<SharedPreferences>()),
           ),
         ],
-        child: BlocBuilder<ThemeBloc, ThemeState>(
+        child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
             ThemeData themeData = ThemeData.light();
-            if (state is ThemeLoaded) {
-              themeData = state.attrs.colors;
+            if (state.attrs != null){
+              themeData = state.attrs!.colors;
             }
 
             return MaterialApp(

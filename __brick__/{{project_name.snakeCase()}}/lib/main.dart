@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mvvm_bloc_temp/presentation/blocs/theme/theme_bloc.dart';
+import 'package:flutter_mvvm_bloc_temp/presentation/blocs/theme/theme_cubit.dart';
 import 'package:flutter_mvvm_bloc_temp/presentation/blocs/theme/theme_state.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';

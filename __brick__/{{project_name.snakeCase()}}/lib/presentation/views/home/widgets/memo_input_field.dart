@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mvvm_bloc_temp/presentation/blocs/home/home_event.dart';
 
 import '../../../../data/models/local/memo.dart';
 import '../../../blocs/home/home_cubit.dart';
@@ -30,12 +29,8 @@ class MemoInputFieldState extends State<MemoInputField> {
           suffixIcon: IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              final homeBloc = context.read<HomeBloc>();
-              homeBloc.add(
-                  AddMemo(
-                      Memo(content: _memoController.text, isImportant: false)
-                  )
-              );
+              final homeCubit = context.read<HomeCubit>();
+              homeCubit.addMemo(Memo(content: _memoController.text, isImportant: false));
 
               if (_memoController.text.isNotEmpty) {
                 _memoController.clear();

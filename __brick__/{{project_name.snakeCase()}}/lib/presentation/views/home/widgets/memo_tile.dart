@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/models.dart';
 import '../../../blocs/home/home_cubit.dart';
-import '../../../blocs/home/home_event.dart';
 
 class MemoTile extends StatelessWidget {
   final Memo memo;
@@ -20,10 +19,8 @@ class MemoTile extends StatelessWidget {
       trailing: IconButton(
           icon: const Icon(Icons.delete),
           onPressed: () {
-            final homeBloc = context.read<HomeBloc>();
-            homeBloc.add(
-                DeleteMemo(memo)
-            );
+            final homeCubit = context.read<HomeCubit>();
+            homeCubit.deleteMemo(memo);
           }
       ),
     );
